@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>accordian menu example</title>
+        <script src="../js/jquery-1.12.4.min.js"></script>
+    </head>
+    <style>
+        ul { list-style: none; padding: 0; margin: 0; }
+        .ac-box > .tit{font-size:28px; font-weight:bold; margin-bottom:35px;}
+        .ac-box .mw-wrap ul li { position: relative; border: 3px solid #ddd; cursor: pointer; margin-bottom: 20px; }
+        .ac-box .mw-wrap ul li.on { border-color: #957a4e; }
+        .ac-box .mw-wrap ul li { border-color: #957a4e; }
+        .ac-box .mw-wrap ul.rt-list li { border: none; padding: 10px 0; font-size: 16px; margin-bottom:0; }
+        .ac-box .mw-wrap ul li p { color: #957a4e; font-size:22px; font-weight:bold; margin-left: 40px; padding: 10px 30px; }
+        .ac-box .mw-wrap ul li.on p { color: #957a4e; }
+        .ac-box .mw-wrap ul li span {  display: inline-block; position: absolute; width: 25px; height: 25px; top:35px; left:25px;  text-align: center; line-height: 25px; font-size: 13px; border-radius: 50%;
+        background: #957a4e; color: #fff; }
+        .ac-box .bt-arrow-box { position: absolute; top: 35px; right: 30px; }
+
+        .mw-wrap ul li.on .show-content{height:250px; overflow-y:scroll; padding:30px; padding-top: 0; }
+        .mw-wrap ul li .show-content{height:0px;  overflow:hidden; padding:0px; transition:.3s;}
+
+        .mw-wrap ul li .show-content{height:100%; padding:30px; padding-top: 0; }
+
+
+        .mw-wrap ul li .show-content p.sub-tit {font-weight:bold; color:#333; font-size:18px; margin-left:0; padding:10px 0; }
+    </style>
+    <body>
+        <script>
+           //주요처리사례 아코디언
+            $(document).ready(function(){ 
+            
+                $(".mw-wrap .tit").click(function(){     
+                
+                    // 이미지 초기화 mw
+                    $(this).parent().siblings().find("img").attr("src", "../img/bottom_arrow.png");
+                    // -->
+                    
+                    $(this).parent().siblings().removeClass("on"); 
+                
+                    if($(this).parent().hasClass("on")){ 
+                        $(this).parent().removeClass("on"); 
+                    
+                        $(this).next().next().find("img").attr("src", "../img/bottom_arrow.png");
+                        
+                    }else{ 
+                        $(this).parent().addClass("on");
+                        
+                        $(this).next().next().find("img").attr("src", "../img/top_arrow.png");
+                    } 
+                    
+                });
+                
+                $(".mw-wrap .bt-arrow-box").click(function(){   
+                    // 이미지 초기화 mw
+                    $(this).find("img").attr("src", "../img/bottom_arrow.png");
+
+                    
+                    $(this).parent().siblings().removeClass("on"); 
+                
+                    if($(this).parent().hasClass("on")){ 
+                        $(this).parent().removeClass("on"); 
+                    
+                        $(this).find("img").attr("src", "../img/bottom_arrow.png");
+                        
+                    }else{ 
+                        $(this).parent().addClass("on");
+                        
+                        $(this).find("img").attr("src", "../img/top_arrow.png");
+                    } 
+                    
+                });
+            });
+        </script>
+        <div class="ac-box">
+			<p class="tit">아코디언 메뉴 구현</p>
+			<div class="mw-wrap"> 
+				<ul> 
+					<li class="on"> 
+						<span>1</span>
+						<p class="tit">아코디언 메뉴01</p> 
+						<div class="show-content"> 
+							<ul class="rt-list">
+								<li>온라인 판매 솔루션, AI, 금융, 온라인 식품, 학습관리 솔루션, 광고대행, 온라인 채팅, 화장품 판매 등</li>
+								<li>다수의 기업에 대한 법률 고문 업무 수행(2022년 기준 총 10개 회사)</li>
+								<li>주주간 계약, 주식매매 및 양수도, 투자계약서, NDA, 콜옵션, M&A 등 다수의 기업(스타트업) 자문 업무 수행 경험</li>
+								<li>영업양수도, 합병, 분할 등 절차상 실사 업무(인허가, 개인정보)</li>
+								<li>IP 주소 사용(재할당, 판매 등) 관련 자문</li>
+								<li>온라인 광고(블로그, 바이럴마케팅 등) 관련 자문</li>
+								<li>모바일 게임 앱 출시 관련 절차 자문</li>
+								<li>물품공급계약, 위탁매매계약 등 각종 계약서 관련 검토</li>
+								<li>K은행 등 정보시스템 구축 사업 관련 자문(정보시스템 구축 사업 지연에 따른 PMO 사업자의 책임 등)</li>
+								<li>IT센터 전산 인프라 구축 및 이전, 위탁감리, 정보시스템 감리 용역 등 계약 관련 검토</li>
+								<li>암호화폐 거래소 운영·폐쇄 등 관련 법적 자문</li>
+								<li>K사 데이터센터 아웃소싱 계약 관련 자문</li>
+								<li>금융결제원 업무 및 제공 서비스 관련 자문</li>
+								<li>전자서명, 공인전자서명의 증거력 및 본인확인서비스 등 관련 자문</li>
+								<li>전자금융거래법상 전자지급결제대행업, 전자고지결제업 등 인허가 관련 자문</li>
+								<li>대부업, 대부중개업, P2P 관련 자문(바이럴마케팅, 광고 심의, 인허가 등)</li>
+								<li>위임직채권추심인의 근로자성 인정 여부에 대한 검토</li>
+							</ul>
+						</div> 
+						<div class="bt-arrow-box">
+							<img class="bt-img" src="../img/top_arrow.png" alt="" />
+						</div>
+					</li> 
+					 
+					<li>
+						<span>2</span>					
+						<p class="tit">아코디언 메뉴02</p> 
+						<div class="show-content"> 
+							<ul class="rt-list">
+								<li>상장회사 Y사 주식의 명의신탁해지 및 전자등록주식 인도 청구, 전자등록주식에 대한 처분금지가처분 등 사건 원고 대리(승소)</li>
+								<li>상장회사 C사의 손해배상청구 대리</li>
+								<li>명의개서 청구의 소 대리</li>
+								<li>사용자책임, 구상금 등 기업 관련 소송 원∙피고 대리</li>
+								<li>한국전력공사 관련 전기사용료청구의 소 상고심 대리</li>
+								<li>등기이사의 퇴직금지급청구의 소 대리</li>
+								<li>경업금지 및 영업비밀침해금지 가처분 및 본안 소송 대리</li>
+							</ul>
+						</div> 
+						<div class="bt-arrow-box">
+							<img class="bt-img" src="../img/bottom_arrow.png" alt="" />
+						</div>
+					</li> 
+					
+					<li>
+						<span>3</span>					
+						<p class="tit">아코디언 메뉴03</p> 
+						<div class="show-content"> 
+							<ul class="rt-list">
+								<li>사기, 횡령(업무상 횡령), 배임(업무상 배임), 특수절도, 절도 등 각종 재산범죄에 대한 피해자 고소대리 및 피의자, 피고인 대리</li>
+								<li>업무상 배임 건에 대한 영장실질심사 피의자 대리(구속영장청구 기각)</li>
+								<li>강제추행, 강간, 카메라등이용촬영 등 각종 성범죄 피해자 고소 및 합의 대리, 피의자 및 피고인 대리</li>
+								<li>보이스피싱, 전자금융거래법위반 등 사건 피의자, 피고인 대리</li>
+								<li>층간소음 관련 특수협박, 재물손괴, 협박, 폭행 등 피해자 고소 대리 및 피의자, 피고인 대리</li>
+								<li>유사수신행위의규제에관한법률위반 피의자, 피고인 대리</li>
+								<li>아동학대범죄의처벌등에관한특례법위반 피의자, 피고인 대리</li>
+								<li>상해, 폭행, 협박, 감금, 업무상과실치사, 공동상해 및 공동재물손괴 등 폭력행위등처벌에관한법률위반 사건에 대한 피해자 고소대리 및 피의자, 피고인 대리</li>
+								<li>사문서위조, 업무방해, 주거침입 등 피해자 고소 대리 및 피의자, 피고인 대리</li>
+								<li>특정경제범죄가중처벌등에관한법률위반(횡령, 배임) 등 사건 피의자 및 피고인 대리</li>
+								<li>마약류관리에관한법률위반 항소심 피고인 대리</li>
+								<li>보조금관리에관한법률위반, 뇌물 등 사건 피의자 대리</li>
+								<li>부정경쟁방지및영업비밀보호에관한법률위반 등 사건 피의자 및 피고인 대리</li>
+								<li>사회복지사업법위반, 장애인복지법위반 사건 피의자 및 피고인 대리</li>
+								<li>음주운전 등 도로교통법위반 피의자 및 피고인 대리(다수의 사건에서 벌금 및 집행유예 선고)</li>
+								<li>무고 사건 피의자 및 피고인 대리(무혐의)</li>
+								<li>정보통신망 명예훼손, 모욕 등 사이버 범죄 관련 피해자 고소 및 피의자, 피고인 대리</li>
+								<li>개인정보보호법위반, 정보통신망법위반 등 형사 사건 대리</li>
+								<li>근로기준법위반 피해자 고소 대리, 피의자 및 피고인 대리</li>
+							</ul>
+						</div> 
+						<div class="bt-arrow-box">
+							<img class="bt-img" src="../img/bottom_arrow.png" alt="" />
+						</div>
+					</li>
+					
+					<li>
+						<span>4</span>					
+						<p class="tit">아코디언 메뉴04</p> 
+						<div class="show-content"> 
+							<ul class="rt-list">
+								<li>개인(신용)정보 관련 규제 대응 및 자문 수행</li>
+								<li>개인정보 Compliance 법률자문(가입신청서 등 개인정보 동의서, 기술적·관리적 보호조치, 내부관리계획, 개인정보 처리방침 등)</li>
+								<li>CCTV 등 개인영상정보 관련 법적 자문</li>
+								<li>클라우드, 비식별조치, 빅데이터 활용 등 개인정보 활용 방안에 대한 자문</li>
+								<li>통신정보, AD-ID 활용 관련 자문</li>
+								<li>영리목적 광고성 정보(스팸 등) 관련 규제 자문</li>
+								<li>주요 통신회사 및 IT회사 관련 개인정보 관련 법적 자문 등</li>
+								<li>국내외 주요 포탈업체들에 대한 법적 자문 업무 수행</li>
+								<li>법인 분할, 합병 및 영업양수도 관련 개인정보 공유, 이전에 대한 자문</li>
+								<li>K사 등 신용조회회사 업무 관련 자문 수행</li>
+								<li>보험회사 TM 관련 민원 자문 수행</li>
+								<li>개인정보 유출과 관련된 자문 업무 수행</li>
+								<li>K사 개인정보 유출 사고 관련 의견제출 등 방송통신위원회 대응 업무 수행</li>
+								<li>M사 방송통신위원회 행정지도(개인정보, 위치정보 등) 대응 업무 수행</li>
+								<li>정보보호 관리체계(ISMS) 인증 관련 법적 자문</li>
+								<li>법원∙수사기관 등의 자료제출 요청에 대한 법적 자문(그 외 감청, 통신자료, 통신사실확인자료 등에 대한 검토)</li>
+								<li>개인정보 보호책임자, 정보보호 최고책임자 지정 관련 자문</li>
+								<li>맞춤형 광고, 바이럴 마케팅 등 광고 관련 개인정보 자문</li>
+								<li>개인정보 관련 논문 작업 참여(사법지, 바른 ICT)</li>
+							</ul>
+						</div> 
+						<div class="bt-arrow-box">
+							<img class="bt-img" src="../img/bottom_arrow.png" alt="" />
+						</div>
+					</li> 
+					
+					<li>
+						<span>5</span>					
+						<p class="tit">아코디언 메뉴05</p> 
+						<div class="show-content"> 
+							<ul class="rt-list">
+								<li>A사, R사, P사 커넥티드 카 관련 자문(계약서, 이용약관, 인허가 절차 등)</li>
+								<li>지상파 방송 채널의 재송신 계약, 케이블방송사간의 전송선로시설 이용계약 관련 법적 자문 수행</li>
+								<li>지상파 방송심의 신청 관련 의견 대리</li>
+								<li>국내외 주요 포탈업체들에 대한 법적 자문(댓글, 임시조치, 명예훼손) 업무 수행</li>
+								<li>신문 등의 진흥에 관한 법률상 인터넷뉴스서비스 관련 자문</li>
+								<li>방송통신위원회, 과학기술정보통신부 등 정부기관에 대한 각종 법률자문</li>
+								<li>N사, 통신비밀보호업무 외부검증 프로젝트 수행</li>
+								<li>A사 별정통신사업 등록, 부가통신사업 신고 등 업무 수행</li>
+								<li>전기통신사업법상 보편적역무, 전화번호 변작, 통신과금서비스, 금지행위 등 관련 자문 수행</li>
+								<li>이동통신단말장치 유통구조 개선에 관한 법률 관련 각종 자문 및 규제기관 대응 업무 수행</li>
+								<li>영화 및 비디오물의 진흥에 관한 법률상 영상물 등급분류 관련 자문</li>
+								<li>장애인방송 프로그램 제공 가이드라인 수정 및 검토</li>
+								<li>케이블방송사 재허가 거부처분 관련 행정소송 대리</li>
+							</ul>
+						</div> 
+						<div class="bt-arrow-box">
+							<img class="bt-img" src="../img/bottom_arrow.png" alt="" />
+						</div>
+					</li> 
+					
+					<li>
+						<span>6</span>					
+						<p class="tit">아코디언 메뉴06</p> 
+						<div class="show-content"> 
+							<ul class="rt-list">
+								<li>주요 통신회사의 공공입찰에 대한 법적 자문 업무 수행</li>
+								<li>국가계약법, 지방계약법 등 공공입찰 관련 법령의 해석 관련 자문</li>
+								<li>소프트웨어산업 진흥법상 대기업 참여제한 규정 해석 관련 자문</li>
+								<li>조달청 협상에 의한 계약 제안서평가 세부기준 등 입찰 관련 법규에 대한 유권해석 관련 자문</li>
+								<li>허위실적서류제출, 계약불이행 등에 기한 부정당제재처분 관련 자문 및 소송(가처분, 행정심판 등) 사건 대리</li>
+								<li>기타공공기관에 대한 부정당업자 제재처분 가능성 여부 자문</li>
+								<li>공공입찰 관련 감사원에 대한 감사청구 대리</li>
+								<li>복권 수탁사업자 선정 입찰에 관한 법적 자문(컨소시엄 약정 등 계약서, 제안서 등) 검토</li>
+								<li>국군재정관리단 공고 입찰참가자격 및 구제수단에 대한 법적 검토</li>
+								<li>국군재정관리단 공고 입찰참가자격 및 구제수단에 대한 법적 검토</li>
+							</ul>
+						</div> 
+						<div class="bt-arrow-box">
+							<img class="bt-img" src="../img/bottom_arrow.png" alt="" />
+						</div>
+					</li> 
+					
+					<li>
+						<span>7</span>					
+						<p class="tit">아코디언 메뉴07</p> 
+						<div class="show-content"> 
+							<ul class="rt-list">
+								<li>A사, P사 위치정보사업 허가(사업계획서, 심사 절차 등 제반 절차 수행)</li>
+								<li>P사 위치기반서비스사업 신고에 대한 자문 업무 수행</li>
+								<li>해외 사업자의 위치정보사업 관련 제반 자문</li>
+								<li>방송통신위원회 등 정부기관에 대한 각종 법률자문</li>
+							</ul>
+						</div> 
+						<div class="bt-arrow-box">
+							<img class="bt-img" src="../img/bottom_arrow.png" alt="" />
+						</div>
+					</li> 
+					
+					
+					
+				</ul> 
+			</div>
+		</div>
+    </body>
+</html>

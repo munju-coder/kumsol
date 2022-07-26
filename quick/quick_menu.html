@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>퀵메뉴</title>
+        <script src="../js/jquery-1.12.4.min.js"></script>
+    </head>
+  
+     <style>
+        .wrap { height: 2000px; position: relative; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        #aside{position:absolute;right:0;top:10%;z-index:5}
+    </style>
+    <body>
+        <div class="wrap">
+            <div id="aside">
+                <ul>
+                    <li><a href="#"><img src="../img/qico01.png" alt="퀵메뉴01"></a></li>
+                    <li><a href="#"><img src="../img/qico02.png" alt="퀵메뉴02"></a></li>
+                    <li><a href="#"><img src="../img/qico03.png" alt="퀵메뉴03"></a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+    <script>
+        $(document).ready( function(){
+            // aside
+            var floatPosition = parseInt($("#aside").css('top'));
+            $(window).scroll(function() {
+                var scrollTop = $(window).scrollTop(); //화면의 top 위치값
+                var newPosition = scrollTop + floatPosition + "px";
+        
+                $("#aside").stop().animate({
+                    "top" : newPosition
+                }, 500);
+        
+            }).scroll();
+        });
+    </script>
+</html>
